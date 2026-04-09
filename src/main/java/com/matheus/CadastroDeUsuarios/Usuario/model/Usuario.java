@@ -1,5 +1,6 @@
 package com.matheus.CadastroDeUsuarios.Usuario.model;
 
+import com.matheus.CadastroDeUsuarios.Tarefas.model.Tarefas;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
