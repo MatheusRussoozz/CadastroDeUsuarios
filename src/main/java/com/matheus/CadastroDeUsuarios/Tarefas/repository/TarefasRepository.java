@@ -1,0 +1,7 @@
+package com.matheus.CadastroDeUsuarios.Tarefas.repository;
+
+import com.matheus.CadastroDeUsuarios.Tarefas.model.Tarefas;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface TarefasRepository extends JpaRepository<Tarefas, Long> {
+}
