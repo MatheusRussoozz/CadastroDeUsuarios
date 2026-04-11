@@ -28,7 +28,7 @@ public class Tarefas {
     @Column(name = "status")
     private Status status;
 
-    @OneToMany(mappedBy = "tb_usuarios")
+    @OneToMany(mappedBy = "tarefas")
     private List<Usuario> usuarios;
 
 

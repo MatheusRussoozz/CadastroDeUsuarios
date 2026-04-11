@@ -30,7 +30,7 @@ public class Usuario {
     private String senha;
 
     @ManyToOne
-    @JoinColumn(name = "tb_tarefas")
+    @JoinColumn(name = "tarefa_id")
     private Tarefas tarefas;
 
 }
