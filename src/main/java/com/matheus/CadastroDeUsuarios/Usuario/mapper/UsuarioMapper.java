@@ -2,7 +2,9 @@ package com.matheus.CadastroDeUsuarios.Usuario.mapper;
 
 import com.matheus.CadastroDeUsuarios.Usuario.dtos.UsuarioDtoListarInformacoes;
 import com.matheus.CadastroDeUsuarios.Usuario.model.Usuario;
+import org.springframework.stereotype.Component;
 
+@Component
 public class UsuarioMapper {
 
     public Usuario map(UsuarioDtoListarInformacoes usuarioDtoListarInformacoes){
