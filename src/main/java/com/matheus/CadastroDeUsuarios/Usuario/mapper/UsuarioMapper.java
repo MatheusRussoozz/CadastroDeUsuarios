@@ -1,29 +1,32 @@
 package com.matheus.CadastroDeUsuarios.Usuario.mapper;
 
+import com.matheus.CadastroDeUsuarios.Usuario.dtos.UsuarioDto;
 import com.matheus.CadastroDeUsuarios.Usuario.dtos.UsuarioDtoListarInformacoes;
 import com.matheus.CadastroDeUsuarios.Usuario.model.Usuario;
 import org.springframework.stereotype.Component;
 
 @Component
 public class UsuarioMapper {
-
-    public Usuario map(UsuarioDtoListarInformacoes usuarioDtoListarInformacoes){
+    public Usuario map(UsuarioDto usuarioDto){
         Usuario usuario = new Usuario();
-        usuario.setId(usuarioDtoListarInformacoes.getId());
-        usuario.setEmail(usuarioDtoListarInformacoes.getEmail());
-        usuario.setNome(usuarioDtoListarInformacoes.getNome());
-        usuario.setTarefas(usuarioDtoListarInformacoes.getTarefas());
+        usuario.setId(usuarioDto.getId());
+        usuario.setEmail(usuarioDto.getEmail());
+        usuario.setNome(usuarioDto.getNome());
+        usuario.setSenha(usuarioDto.getSenha());
+        usuario.setTarefas(usuarioDto.getTarefas());
 
         return usuario;
     }
 
-    public UsuarioDtoListarInformacoes map(Usuario usuario){
-        UsuarioDtoListarInformacoes usuarioDtoListarInformacoes = new UsuarioDtoListarInformacoes();
-        usuarioDtoListarInformacoes.setId(usuario.getId());
-        usuarioDtoListarInformacoes.setEmail(usuario.getEmail());
-        usuarioDtoListarInformacoes.setNome(usuario.getNome());
-        usuarioDtoListarInformacoes.setTarefas(usuario.getTarefas());
+    public UsuarioDto map(Usuario usuario){
+        UsuarioDto usuarioDto = new UsuarioDto();
+        usuarioDto.setId(usuario.getId());
+        usuarioDto.setEmail(usuario.getEmail());
+        usuarioDto.setNome(usuario.getNome());
+        usuarioDto.setSenha(usuario.getSenha());
+        usuarioDto.setTarefas(usuario.getTarefas());
 
-        return usuarioDtoListarInformacoes;
+        return usuarioDto;
     }
+
 }
