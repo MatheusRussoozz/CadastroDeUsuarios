@@ -1,7 +1,9 @@
 package com.matheus.CadastroDeUsuarios.Usuario.service;
 
+import com.matheus.CadastroDeUsuarios.Usuario.dtos.UsuarioDto;
 import com.matheus.CadastroDeUsuarios.Usuario.dtos.UsuarioDtoListarInformacoes;
 import com.matheus.CadastroDeUsuarios.Usuario.mapper.UsuarioMapper;
+import com.matheus.CadastroDeUsuarios.Usuario.mapper.UsuarioMapperInfos;
 import com.matheus.CadastroDeUsuarios.Usuario.model.Usuario;
 import com.matheus.CadastroDeUsuarios.Usuario.repository.UsuarioRepository;
 import org.springframework.stereotype.Service;
@@ -13,11 +15,13 @@ import java.util.stream.Collectors;
 @Service
 public class UsuarioService {
     private final UsuarioRepository usuarioRepository;
-    private final UsuarioMapper usuarioMapper;
+    private final UsuarioMapperInfos usuarioMapper;
+    private final UsuarioMapper usuarioDtoMapper;
 
-    public UsuarioService(UsuarioRepository usuarioRepository, UsuarioMapper usuarioMapper) {
+    public UsuarioService(UsuarioRepository usuarioRepository, UsuarioMapperInfos usuarioMapper, UsuarioMapper usuarioDtoMapper) {
         this.usuarioRepository = usuarioRepository;
         this.usuarioMapper = usuarioMapper;
+        this.usuarioDtoMapper = usuarioDtoMapper;
     }
 
     //Listar - GET
@@ -40,19 +44,19 @@ public class UsuarioService {
         return null;
     }
 
-    public UsuarioDtoListarInformacoes criarUsuario(UsuarioDtoListarInformacoes usuarioDto){
-        Usuario usuario = usuarioMapper.map(usuarioDto);
+    public UsuarioDto criarUsuario(UsuarioDto usuarioDto){
+        Usuario usuario = usuarioDtoMapper.map(usuarioDto);
         usuario = usuarioRepository.save(usuario);
-        return usuarioMapper.map(usuario);
+        return usuarioDtoMapper.map(usuario);
     }
 
-    public UsuarioDtoListarInformacoes atualizarUsuario(Long id, UsuarioDtoListarInformacoes usuarioDtoListarInformacoes){
+    public UsuarioDto atualizarUsuario(Long id, UsuarioDto usuarioDto){
         Optional<Usuario> usuarioExistente = usuarioRepository.findById(id);
         if (usuarioExistente.isPresent()){
-            Usuario usuarioAtualizado = usuarioMapper.map(usuarioDtoListarInformacoes);
+            Usuario usuarioAtualizado = usuarioDtoMapper.map(usuarioDto);
             usuarioAtualizado.setId(id);
             Usuario usuarioSalvo = usuarioRepository.save(usuarioAtualizado);
-            return usuarioMapper.map(usuarioAtualizado);
+            return usuarioDtoMapper.map(usuarioAtualizado);
         }
         return null;
     }
