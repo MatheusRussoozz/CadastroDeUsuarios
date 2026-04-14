@@ -61,7 +61,6 @@ public class TarefasService {
 
 
     public TarefaDtoInfos alterarStatus(Long id, Status alterarStatus){
-
         Tarefas tarefa = tarefasRepository.findById(id)
          .orElseThrow(() -> new RuntimeException("Tarefa não encontrada"));
 
