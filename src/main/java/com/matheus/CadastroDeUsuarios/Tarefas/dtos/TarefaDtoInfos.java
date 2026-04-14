@@ -15,6 +15,7 @@ import java.util.List;
 @NoArgsConstructor
 public class TarefaDtoInfos {
 
+    private Long id;
     private String nome;
     private String descricao;
     private Status status;
