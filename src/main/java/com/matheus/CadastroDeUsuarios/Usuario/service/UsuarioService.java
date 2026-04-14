@@ -1,5 +1,6 @@
 package com.matheus.CadastroDeUsuarios.Usuario.service;
 
+import com.matheus.CadastroDeUsuarios.Usuario.Exceptions.EmailDuplicadoException;
 import com.matheus.CadastroDeUsuarios.Usuario.dtos.UsuarioDto;
 import com.matheus.CadastroDeUsuarios.Usuario.dtos.UsuarioDtoListarInformacoes;
 import com.matheus.CadastroDeUsuarios.Usuario.mapper.UsuarioMapper;
@@ -45,6 +46,9 @@ public class UsuarioService {
     }
 
     public UsuarioDto criarUsuario(UsuarioDto usuarioDto){
+        if(usuarioRepository.existsByEmail(usuarioDto.getEmail())){
+            throw new EmailDuplicadoException("Email já cadastrado");
+        }
         Usuario usuario = usuarioDtoMapper.map(usuarioDto);
         usuario = usuarioRepository.save(usuario);
         return usuarioDtoMapper.map(usuario);
